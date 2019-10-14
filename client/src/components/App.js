@@ -15,7 +15,7 @@ class App extends React.Component {
     this.setState({
       selectedArray: rowIndex
     })
-    console.log(this.state.selectedArray)
+    // console.log(this.state.selectedArray)
   };
 
 
@@ -39,6 +39,22 @@ class App extends React.Component {
     })
   };
 
+  handlePopClick = () => {
+    let newSquares = [...this.state.squares]
+    let newRow = [...this.state.squares[this.state.selectedArray]];
+    if(newRow.includes(0)){
+        newRow[newRow.indexOf(0)-1] = 0
+    } else {
+        newRow[newRow.length -1] = 0
+    }
+    newSquares[this.state.selectedArray] = newRow;
+    
+    console.log(newRow)
+      this.setState({
+          squares: newSquares, 
+      })
+    };
+
   render() {
     return (
       <div className="App">
@@ -48,7 +64,7 @@ class App extends React.Component {
         />
 
         <button onClick={this.handlePushClick}>Push</button>
-        <button>Pop</button>
+        <button onClick={this.handlePopClick} >Pop</button>
         <button>Shift</button>
         <button>Unshift</button>
       </div>
