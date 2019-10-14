@@ -42,19 +42,18 @@ class App extends React.Component {
   handlePopClick = () => {
     let newSquares = [...this.state.squares];
     let newRow = [...this.state.squares[this.state.selectedArray]];
-    if(!newRow[0]){alert('please choose another array to pop')};
-    if(newRow.includes(0)){
+    if(!newRow[0]){
+        alert('please choose another array to pop')
+    } else if( newRow.includes(0) ){
         newRow[newRow.indexOf(0)-1] = 0
     } else {
         newRow[newRow.length - 1] = 0
-    };
+    }
     newSquares[this.state.selectedArray] = newRow;
-    
-    console.log(newRow)
-      this.setState({
-          squares: newSquares 
-      });
-    };
+    this.setState({
+        squares: newSquares 
+    });
+  };
 
     handleUnshiftClick = () => {
         let player = '';
@@ -76,7 +75,18 @@ class App extends React.Component {
     
 
     handleShiftClick = () => {
-
+        let newSquares = [...this.state.squares];
+        let newRow = [...this.state.squares[this.state.selectedArray]];
+        if(!newRow[0]){
+            alert('please choose another array to shift')
+        } else{
+            newRow.shift();
+            newRow.push(0);
+        }
+        newSquares[this.state.selectedArray] = newRow;
+        this.setState({
+            squares: newSquares 
+        });
     }
 
 
