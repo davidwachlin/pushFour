@@ -42,18 +42,20 @@ class App extends React.Component {
   handlePopClick = () => {
     let newSquares = [...this.state.squares]
     let newRow = [...this.state.squares[this.state.selectedArray]];
+    if(!newRow[0]){alert('please choose another array to pop')}
     if(newRow.includes(0)){
         newRow[newRow.indexOf(0)-1] = 0
     } else {
-        newRow[newRow.length -1] = 0
+        newRow[newRow.length - 1] = 0
     }
     newSquares[this.state.selectedArray] = newRow;
     
     console.log(newRow)
       this.setState({
-          squares: newSquares, 
+          squares: newSquares 
       })
     };
+
 
   render() {
     return (
