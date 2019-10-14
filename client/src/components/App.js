@@ -25,36 +25,59 @@ class App extends React.Component {
       player="X"
     } else{
       player = "O"
-    }
-    let newSquares = [...this.state.squares]
+    };
+    let newSquares = [...this.state.squares];
     let newRow = [...this.state.squares[this.state.selectedArray]];
     if(newRow.includes(0)){
-      newRow[newRow.indexOf(0)] = player
+      newRow[newRow.indexOf(0)] = player;
     } else {
-      alert('Selected array full, cannot push to selected array.')
+      alert('Selected array full, cannot push to selected array.');
     }
     newSquares[this.state.selectedArray]=newRow;
     this.setState({
       squares: newSquares, isXturn: !this.state.isXturn
-    })
+    });
   };
 
   handlePopClick = () => {
-    let newSquares = [...this.state.squares]
+    let newSquares = [...this.state.squares];
     let newRow = [...this.state.squares[this.state.selectedArray]];
-    if(!newRow[0]){alert('please choose another array to pop')}
+    if(!newRow[0]){alert('please choose another array to pop')};
     if(newRow.includes(0)){
         newRow[newRow.indexOf(0)-1] = 0
     } else {
         newRow[newRow.length - 1] = 0
-    }
+    };
     newSquares[this.state.selectedArray] = newRow;
     
     console.log(newRow)
       this.setState({
           squares: newSquares 
-      })
+      });
     };
+
+    handleUnshiftClick = () => {
+        let player = '';
+        if(this.state.isXturn){
+            player="X"
+        } else {
+            player = "O"
+        };
+        let newSquares = [...this.state.squares];
+        let newRow = [...this.state.squares[this.state.selectedArray]];
+        if(newRow[2]){alert('please choose another array to unshift')};
+        newRow.pop();
+        newRow.unshift(player);
+        newSquares[this.state.selectedArray] = newRow;
+        this.setState({
+          squares: newSquares 
+         })
+    };
+    
+
+    handleShiftClick = () => {
+
+    }
 
 
   render() {
@@ -67,8 +90,8 @@ class App extends React.Component {
 
         <button onClick={this.handlePushClick}>Push</button>
         <button onClick={this.handlePopClick} >Pop</button>
-        <button>Shift</button>
-        <button>Unshift</button>
+        <button onClick={this.handleUnshiftClick} >Unshift</button>
+        <button onClick={this.handleShiftClick} >Shift</button>
       </div>
     );
   }
