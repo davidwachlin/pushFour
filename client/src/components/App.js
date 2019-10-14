@@ -91,17 +91,29 @@ class App extends React.Component {
 
 
   render() {
+
+      let player;
+      if(this.state.isXturn){
+          player = 'X'
+      }else{
+         player = 'O'
+      }
+
     return (
       <div className="App">
         <GameBoard 
         squares={this.state.squares} 
         selectArray={this.selectArray}
         />
-
+        <div className='buttons' >
         <button onClick={this.handlePushClick}>Push</button>
         <button onClick={this.handlePopClick} >Pop</button>
         <button onClick={this.handleUnshiftClick} >Unshift</button>
         <button onClick={this.handleShiftClick} >Shift</button>
+
+        {player}'s turn
+
+        </div>
       </div>
     );
   }
