@@ -10,7 +10,7 @@ class App extends React.Component {
     isXturn: true
   };
 
-  selectArray = rowIndex => {
+  handleSelectArray = rowIndex => {
     this.setState({
       selectedArray: rowIndex
     });
@@ -87,7 +87,8 @@ class App extends React.Component {
       <div className="App">
         <GameBoard
           squares={this.state.squares}
-          selectArray={this.selectArray}
+          handleSelectArray={this.handleSelectArray}
+          selectedArray={this.state.selectedArray}
         />
         <div className="buttons">
           <button onClick={this.handlePushClick}>Push</button>
