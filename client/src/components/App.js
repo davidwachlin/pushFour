@@ -56,7 +56,7 @@ class App extends React.Component {
   };
 
     handleUnshiftClick = () => {
-        let player = '';
+        let player = this.state.isXturn ? 'X' : 'O';
         if(this.state.isXturn){
             player="X"
         } else {
