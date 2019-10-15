@@ -39,7 +39,18 @@ class Board extends React.Component {
             squares={this.props.squares[2]}
             rowIndex={2}
           />
-        </div>
+        {this.props.squares.map((row, index) => {
+          <div
+            onClick={() => {
+              this.props.selectArray(index)
+            }}
+          >
+           <GameRow
+               className='board-row'
+               squares={this.props.squares[index]}
+               rowIndex={index}
+           />
+         </div>
       </div>
     );
   }
