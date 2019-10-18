@@ -7,17 +7,12 @@ class Board extends React.Component {
       <div>
         {this.props.squares.map((row, index) => {
           return (
-            <div
-              onClick={() => {
-                this.props.selectArray(index);
-              }}
-            >
-              <GameRow
-                className="board-row"
-                squares={this.props.squares[index]}
-                rowIndex={index}
-              />
-            </div>
+            <GameRow
+              handleSelectArray={this.props.handleSelectArray}
+              squares={this.props.squares[index]}
+              rowIndex={index}
+              isSelected={this.props.selectedArray === index}
+            />
           );
         })}
       </div>
